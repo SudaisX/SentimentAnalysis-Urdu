@@ -67,12 +67,41 @@ body {
     margin-bottom: 100px;
 }
 
-.stats {
+.heading {
     display: flex;
     /* width: 60%; */
     justify-content: space-between;
-    margin-bottom: 80px;
-    margin-top: 100px;
+    /* margin-bottom: 80px; */
+    margin-top: 50px;
+}
+
+.stats {
+    margin-bottom: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.accuracy {
+    display: flex;
+    flex-direction: column;
+}
+
+.accuracy div {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.value {
+    display: flex;
+    justify-content: space-between;
+}
+
+.value div {
+    margin-right: 30px;
 }
 
 .timer {
@@ -153,7 +182,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    font-size: 30px;
+    font-size: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
 }

@@ -49,9 +49,30 @@ function App() {
 
     return (
         <>
-            <div className='stats'>
+            <div className='heading'>
                 <div className='score' id='score'>
                     Urdu Sentiment Analysis
+                </div>
+            </div>
+            <div className='stats'>
+                <div className='accuracy'>
+                    <div className='value'>
+                        <div>Accuracy:</div> <div>0.54</div>
+                    </div>
+                    <div className='value'>
+                        <div>Precision:</div>{' '}
+                        <div>
+                            <span className='positive'>0.52</span> |{' '}
+                            <span className='negative'>0.69</span> | 0.42
+                        </div>
+                    </div>
+                    <div className='value'>
+                        <div>Recall:</div>{' '}
+                        <div>
+                            <span className='positive'>0.76</span> |{' '}
+                            <span className='negative'>0.31</span> | 0.81
+                        </div>
+                    </div>
                 </div>
             </div>
             {loading ? (
@@ -81,23 +102,33 @@ function App() {
             {sentimentAnalysis && (
                 <div className='container-result'>
                     <div className='summary'>
-                        <div className='positive'>Positive: {positive} </div>
-                        <div className='neutral'>Neutral: {neutral} </div>
-                        <div className='negative'>Negative: {negative} </div>
+                        <div className='positive'>
+                            Positive:{' '}
+                            {((positive / (positive + neutral + negative)) * 100).toFixed(2)}% (
+                            {positive}){' '}
+                        </div>
+                        <div className='neutral'>
+                            Neutral:{' '}
+                            {((neutral / (positive + neutral + negative)) * 100).toFixed(2)}% (
+                            {neutral}){' '}
+                        </div>
+                        <div className='negative'>
+                            Negative:{' '}
+                            {((negative / (positive + neutral + negative)) * 100).toFixed(2)}% (
+                            {negative}){' '}
+                        </div>
                     </div>
                     <Table responsive style={{ color: '#171717' }}>
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Sentence</th>
                                 <th>Sentiment</th>
+                                <th>Sentence</th>
+                                <th>#</th>
                             </tr>
                         </thead>
                         <tbody style={{ fontSize: '20px' }}>
                             {sentimentAnalysis.map((elem, i) => (
                                 <tr key={i}>
-                                    <td>{i}</td>
-                                    <td>{elem.sentence}</td>
                                     <td style={{ fontSize: '40px' }}>
                                         {/* {elem.sentiment} */}
                                         {elem.sentiment === 0
@@ -106,6 +137,8 @@ function App() {
                                             ? '😠'
                                             : '😐'}
                                     </td>
+                                    <td>{elem.sentence}</td>
+                                    <td>{i + 1}</td>
                                 </tr>
                             ))}
                         </tbody>

@@ -73,7 +73,6 @@ def count_words(data):
 
 
 def learn_model(data, target):
-
     classifier = None
     # Your custom implementation of NaiveBayes classifier will go here.
     print("target", target)
@@ -282,7 +281,7 @@ async def create_item(sentences: Sentences):
     sentence_dict = sentences.dict()
     text = sentence_dict["sentences"]
     # Loading data.....
-    dataset = load_file("project.xlsx")
+    dataset = load_file("new_data.xlsx")
     data, target = dataset['Text'].tolist(), dataset['Sentiment'].tolist()
 
     count = len(text)
